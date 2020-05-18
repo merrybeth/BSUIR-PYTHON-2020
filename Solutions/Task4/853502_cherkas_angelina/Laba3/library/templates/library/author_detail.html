@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{author.first_name}} {{author.last_name}}</h1>
+
+  <p><strong>Date of birth:</strong> {{ author.date_of_birth}}</p> <!-- author detail link not yet defined -->
+  <p><strong>Date of death:</strong> {{ author.date_of_death }}</p>
+    {% if perms.author_delete %}
+          <li><a href="{% url 'author_create' %}">Create new author</a></li>
+          <li><a href="{% url 'author_update' author.pk%}">Update this author</a></li>
+          <li><a href="{% url 'author_delete' author.pk%}">Delete this author</a></li>
+    {% endif %}
+
+    <hr>
+    <h2>Related books</h2>
+    {% for boo in author.book_set.all %}
+        <a href="{% url 'book-detail' boo.pk %}">{{ boo.title }}</a>
+    {% endfor %}
+
+
+
+
+{% endblock %}
