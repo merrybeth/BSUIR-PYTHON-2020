@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 import uuid
 from datetime import date
 from django.dispatch import receiver
-from Laba3.email import new_send_email
+from library.email import new_send_email
 
 
 class Genre(models.Model):
