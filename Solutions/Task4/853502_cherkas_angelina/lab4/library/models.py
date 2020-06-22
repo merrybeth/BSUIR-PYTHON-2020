@@ -1,4 +1,4 @@
-from multiprocessing.pool import ThreadPool
+
 from django.core.mail import EmailMessage
 from django.db import models
 from django.db.models.signals import post_save
@@ -7,9 +7,8 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 import uuid
 from datetime import date
-from multiprocessing import Process, Manager
 from django.dispatch import receiver
-
+from Laba3.email import new_send_email
 
 
 class Genre(models.Model):
@@ -147,21 +146,3 @@ class Mail(models.Model):
 
 
 
-IS_ACTIVE = False
-
-def process_sent_queue(queue):
-    while True:
-        if not queue.empty():
-            email = queue.get()
-            email.send()
-
-
-def new_send_email(email):
-    if not IS_ACTIVE:
-        new_send_email.queue = Manager().Queue()
-        process = Process(target=process_sent_queue, args=(new_send_email.queue,))
-        process.daemon = True
-        process.start()
-        models.IS_ACTIVE = True
-
-    new_send_email.queue.put(email)

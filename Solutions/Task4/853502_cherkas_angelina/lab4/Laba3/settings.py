@@ -83,9 +83,9 @@ DATABASES = {
    # }
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
+        'NAME': 'base1',
+        'USER': 'postgres',
+        'PASSWORD': 'qwerqwer',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -130,13 +130,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-EMAIL_HOST = ''
+EMAIL_HOST = 'in-v3.mailjet.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = ''                                   #added
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_USER = '9a595abd70168ac573d3291c7e915740'                                   #added
+EMAIL_HOST_PASSWORD = 'a53f31421caef0daeaadfd4ba085cad2'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-DEFAULT_FROM_EMAIL = ''
+DEFAULT_FROM_EMAIL = 'L.egerumia@gmail.com'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
